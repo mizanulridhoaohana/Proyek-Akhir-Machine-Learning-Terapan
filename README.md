@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Mizanul Ridho Aohana
 
 ## Project Overview
 
@@ -12,31 +12,27 @@ Pada bagian ini, Kamu perlu menuliskan latar belakang yang relevan dengan proyek
 
 ## Business Understanding
 
-Pada bagian ini, Anda perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
+Proyek ini dibangun untuk perusahaan dengan karakteristik bisnis sebagai berikut :
++ Perusahaan yang aktif mengembangkan aplikasi lagu untuk kepentingan komersial.
++ Perusahaan yang aktif melakukan pembaruan untuk meningkatkan kenyamanan pengguna.
 
 ### Problem Statements
 
-Menjelaskan pernyataan masalah:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+Berikut beberapa permasalahan yang diperoleh:
+- Informasi apa saja yang dapat diperoleh dari dataset ini, terutama mengenai hubungan antara fitur-fitur tertentu yang memengaruhi popularitas musik?
+- Dengan informasi yang ada pada dataset, bagaimana cara menghasilkan algoritma yang optimal dalam memberikan rekomendasi lagu kepada pengguna?
+- Bagaimana penggunaan algoritma dapat meningkatkan ketertarikan pengguna?
 
 ### Goals
 
-Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+Tujuan dalam proyek ini adalah:
+- Menentukan variabel yang paling berpengaruh terhadap popularitas musik, dan mengidentifikasi korelasi antara variabel-variabel tersebut.
+- Meningkatkan jumlah pemutaran lagu baru dan efisiensi dalam memberikan rekomendasi lagu baru berdasarkan peningkatan pemahaman tentang faktor-faktor yang dipengaruhi.
+- Mengembangkan model machine learning yang mampu memberikan rekomendasi lagu baru dengan tingkat akurasi yang tinggi berdasarkan karakteristik tertentu, sehingga memungkinkan perusahaan untuk menyesuaikan strategi produksi dan iklan.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+### Solution statements
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Approach” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution approach (algoritma atau pendekatan sistem rekomendasi).
+- Untuk 
 
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
