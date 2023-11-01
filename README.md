@@ -84,14 +84,43 @@ Dalam Exploratory Data Analysis (EDA), Gambar 2 dan Gambar 3 akan melakukan visu
 
 Gambar 4. Visualisasi Distribusi Popularitas berdasarkan Density
 
-Dari 
+Dari Gambar 4. density dapat memberikan informasi tentang bagaimana popularitas terdistribusi di antara berbagai item. Density yang tinggi pada suatu titik di grafik berarti bahwa ada banyak item yang memiliki popularitas sekitar nilai tersebut, sementara density yang rendah menunjukkan bahwa hanya sedikit item yang memiliki popularitas pada tingkat tersebut. Pada Gambar 4. grafik menunjukkan bahwa dataset memiliki sebaran popularitas yang terkonsentrasi cukup merata. Kemudian jika dilihat lebih jauh, nilai density popularitas mulai menurun pada angka 50.
+
+![image](https://github.com/mizanulridhoaohana/Proyek-Akhir-Machine-Learning-Terapan/assets/112617513/4d3f2c8e-0ba9-4ed8-8544-d0efa59acd95)
+
+Gambar 5. Features Correlation wih dependent variable
+
+Gambar 5 mendeskripsikan feature correlation setelah dilakukan pengolahan data. Jika dilihat pada gambar, data menunjukkan feature yang memiliki korelasi tertinngi adalah loudness, disusul dengan energy dan danceability.
+
+![popularity](https://github.com/mizanulridhoaohana/Proyek-Akhir-Machine-Learning-Terapan/assets/112617513/0fb596ae-701e-47f0-9525-c5f640cd07c4)
+
+Gambar 6. Sebaran Artis Populer
+
+Pada Gambar 6. ditampilkan 15 artist dengan rating popularitas tertinggi. Rating tertinggi ada pada artis Various Artist, Various Artist ini artinya artist yang terdiri lebih dari 1 orang (duo dan group band).
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+Data preparation yang dilakukan pada dataset ini adalah sebagai berikut:
++ Encoding
+
+  _Encoding_ adalah teknik mengubah data kategorik menjadi data numerik dimana setiap kategori menjadi kolom baru dengan nilai unik yang diberikan secara berurutan. Fitur yang akan diubah menjadi numerik pada proyek ini adalah _popularity_. Dengan mengubah data kategori numerik, perhitungan dalam data modeling dapat dipermudah dan disederhanakan.
+  
++ Check Missing Value
+
+  Proses ini akan melakukan pengecekan terhadap nilai _missing value_ dari dataset yang sudah ada. Hal ini dilakukan untuk mengantisipasi _overfit_ atau _underfit_ pada model yang akan dibangun dikarenakan oleh dataset yang belum dinormalisasi
+
++ Convert Data Type
+
+  Pada proses ini, akan dilakukan penyeragaman tipe data pada setiap kolom numerik, sehingga seluruh kolom dapat terstandarisasi dengan baik.
+
++ Add Additional Variable
+
+  Proses ini bertujuan untuk menambahkan variabel baru yang dapat memberikan _insight_ baru mengenai mobil yang sudah diproduksi. Variabel yang ditambahkan adalah _Age_, variabel ini merepresentasikan umur dari kendaraan sampai dengan saat ini.
+
++ Train Test Split
+
+  _Train test split_ adalah proses membagi data menjadi data latih dan data uji. Data latih akan digunakan untuk membangun model, sedangkan data uji akan digunakan untuk menguji performa model. Pada proyek ini dataset sebesar 1007 dibagi menjadi komposisi 805 (80%) untuk data latih dan 202 (20%) untuk data uji. Komposisi pembagian ini digunakan karena jumlah dataset yang dimiliki cenderung sedikit, sehingga untuk mengoptimalkan pelatihan model, maka komposisi training yang digunakan adalah 80% dan testing 20%.
+  
 
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
