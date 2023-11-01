@@ -123,20 +123,140 @@ Data preparation yang dilakukan pada dataset ini adalah sebagai berikut:
   
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
++ Algoritma
+  Penelitian ini melakukan pemodelan dengan 3 algoritma, yaitu _Cosine Similarity_, _Scholastic Gradient Descent_, dan _Decision Tree_.
+  + Cosine Similarity
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
+    _Cosine similarity_ adalah sebuah metrik atau ukuran yang digunakan untuk mengukur sejauh mana dua vektor berada dalam arah yang sama dalam ruang berdimensi banyak. Ini adalah salah satu metode yang umum digunakan dalam pemrosesan teks, pengelompokan (clustering), sistem rekomendasi, dan berbagai bidang lainnya di mana perlu dilakukan perbandingan atau pengukuran kesamaan antara dua vektor atau dokumen.
+    Cosine similarity mengukur kesamaan berdasarkan sudut antara dua vektor dalam ruang berdimensi banyak. Dua vektor yang benar-benar sejajar memiliki cosine similarity sebesar 1, sedangkan dua vektor yang tegak lurus memiliki cosine similarity sebesar 0, dan vektor yang berlawanan arah memiliki cosine similarity sebesar -1.
+    Rumus dari cosine similarity antara dua vektor A dan B adalah sebagai berikut:
+
+    $$\\text{Cosine Similarity}(A, B) = \frac{{A \cdot B}}{{\|A\| \cdot \|B\|}} \$$
+
+    Di mana:
+    - $\(A \cdot B\)$ adalah hasil perkalian titik (dot product) antara vektor A dan B.
+    - $\(\|A\|\) dan \(\|B\|\)$ adalah panjang (magnitude) dari vektor A dan B, yang dapat dihitung sebagai akar kuadrat dari jumlah kuadrat elemen-elemen vektor.
+
+    Cosine similarity sering digunakan dalam pemrosesan teks untuk mengukur sejauh mana dua dokumen serupa berdasarkan representasi vektor (misalnya, model ruang vektor Word2Vec atau TF-IDF). Semakin tinggi nilai cosine similarity antara dua dokumen, semakin mirip atau serupa kontennya. Ini memungkinkan perbandingan dan pengelompokan dokumen berdasarkan kesamaan mereka dalam representasi vektor.
+    
+  + Scholastic Gradient Descent (SGD)
+
+    _Stochastic Gradient Descent_ (SGD) adalah sebuah algoritma optimisasi yang digunakan dalam machine learning untuk melatih model. Kerja algoritma ini adalah dengan memperbarui parameter-model secara iteratif untuk mengurangi kesalahan prediksi seiring dengan melihat satu data pelatihan atau sekelompok data pelatihan yang dipilih secara acak pada setiap iterasi.
+
+    1. Inisialisasi parameter-model secara acak atau awal: θ(0)
+    2. Untuk setiap iterasi t = 1, 2, 3, ...:
+       
+       a. Pilih satu data pelatihan atau sekelompok data pelatihan secara acak: $(xi, yi)$
+       b. Hitung gradien dari fungsi biaya terhadap parameter-model:
+
+       $$∇J(θ(t), xi, yi)$$
+       
+       c. Perbarui parameter-model:
+
+       $$θ(t+1) = θ(t) - α * ∇J(θ(t), xi, yi)$$
+       
+       d. (Opsional) Periksa kriteria penghentian, seperti jumlah iterasi atau tingkat kesalahan yang dapat diterima.
+
+       Di mana:
+       - $θ(t)$ adalah parameter-model pada iterasi ke-t.
+       - $(xi, yi)$ adalah data pelatihan yang dipilih pada iterasi ke-t, dengan xi sebagai fitur dan yi sebagai label.
+       - $J(θ, xi, yi)$ adalah fungsi biaya yang digunakan untuk mengukur kesalahan prediksi model terhadap data pelatihan $(xi, yi)$.
+       - $∇J(θ, xi, yi)$ adalah gradien dari fungsi biaya $J(θ, xi, yi)$ terhadap parameter-model θ.
+       - $α$ adalah langkah pembaruan (learning rate) yang mengendalikan seberapa besar perubahan yang dilakukan pada setiap iterasi.
+
+  + Decision Tree
+
+    _Decision tree_ (pohon keputusan) adalah sebuah model prediktif dalam ilmu data dan pembelajaran mesin yang digunakan untuk mengambil keputusan berdasarkan aturan yang didefinisikan dalam bentuk struktur pohon. Model ini digunakan untuk masalah klasifikasi dan regresi, serta dapat digunakan untuk tugas pengambilan keputusan yang melibatkan berbagai variabel dan skenario. Algoritma _Decision Tree_ mengikuti serangkaian langkah untuk membangun model pemutusan keputusan. Langkah-langkah dari algoritma _Decision tree_ adalah sebagai berikut:
+    1. Mulai dari simpul akar, misalkan sebagai S, yang berisi dataset lengkap.
+    2. Ambil atribut terbaik dalam dataset menggunakan _Attribute Selection Measure_ (ASM). ASM yang bisa digunakan di antaranya _Information Gain_ dan Gini _Index_
+    3. Pisahkan himpunan S menjadi himpunan bagian yang berisi kemungkinan nilai untuk atribut terbaik.
+    4. Buat simpul _decision tree_ yang berisi atribut terbaik.
+    5. Buat simpul _decision tree_ baru secara rekursif menggunakan himpunan bagian dari kumpulan data yang dibuat pada langkah 3. Lanjutkan proses ini sampai tahap terakhir di mana tidak dapat mengklasifikasikan simpul lebih lanjut. Simpul ini yang menjadi simpul akhir atau disebut sebagai simpul daun (_leaf node_).
+
+    Dengan demikian, _Decision Tree_ membantu dalam memetakan kondisi atau atribut yang membimbing keputusan berdasarkan data yang ada, dan memungkinkan untuk melakukan klasifikasi atau prediksi. Dalam implementasinya digunakan [sklearn.tree.DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) dalam code.
+
+  + Hyperparameter Tuning (Grid Search)
+    
+    _ Hyperparameter tuning_ adalah cara untuk mendapatkan parameter terbaik dari algoritma dalam membangun model. Salah satu teknik dalam _hyperparameter tuning_ yang digunakan dalam proyek ini adalah _grid search_. Langkah pertama dalam algoritma ini adalah mendefinisikan parameter yang akan diuji, seperti kedalaman pohon dalam Decision Tree atau laju pembelajaran dalam Scholastic Gradient Descent. Kemudian, akan dibuat "grid" parameter yang berisi semua kombinasi nilai yang akan diuji. Setelah itu, data akan dibagi menjadi set pelatihan dan set validasi silang. Untuk setiap kombinasi parameter dalam grid, model dilatih pada set pelatihan dan diuji pada set validasi silang. Hasilnya dievaluasi dengan metrik kinerja seperti akurasi. Setelah mengevaluasi semua kombinasi parameter, akan dipilih kombinasi yang memberikan kinerja terbaik. Parameter ini kemudian digunakan untuk melatih model pada seluruh data pelatihan. Pendekatan ini akan mempermudah dalam menemukan parameter yang optimal tanpa harus melakukan upaya uji coba dan kesalahan secara manual, dan memastikan bahwa model yang dibangun memiliki kinerja paling baik untuk tugas yang diberikan.
+
 
 ## Evaluation
-Metrik evaluasi yang digunakan pada proyek ini [Accuracy](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html). $R^2$ (R-_squared_), juga dikenal sebagai koefisien determinasi, adalah metrik evaluasi yang digunakan dalam statistik dan analisis regresi untuk mengukur sejauh mana model regresi cocok dengan data yang diamati. $R^2 Score$ mengukur seberapa baik variabilitas dalam data independen (variabel prediktor) menjelaskan variabilitas dalam data dependen (variabel target). $R^2 Score$ berkisar antara 0 hingga 1, di mana 1 mengindikasikan bahwa model mampu menjelaskan semua variasi dalam data dengan sempurna, sementara 0 menunjukkan bahwa model tidak menjelaskan variasi apa pun dan hasilnya sama dengan prediksi rata-rata. 
+Metrik evaluasi yang digunakan pada proyek ini adalah [Accuracy](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html). Metrik evaluasi $accuracy$ adalah salah satu metrik yang digunakan dalam machine learning untuk mengukur sejauh mana model klasifikasi berhasil dalam memprediksi kelas dari data uji. Metrik ini mengukur persentase dari prediksi yang benar (prediksi yang sesuai dengan kelas sebenarnya) dibandingkan dengan total jumlah prediksi.
 
-Oleh karena itu, penggunaan $R^2 Score$ dalam  proyek ini adalah untuk mengukur sejauh mana model mampu menjelaskan variasi dalam harga mobil sport berdasarkan atribut-atribut yang ada. Dengan cara membandingkan kinerja model dengan prediksi rata-rata, R2 Score memberikan gambaran tentang tingkat akurasi prediksi, yang penting dalam menentukan prediksi harga mobil. Berikut formula $R^2 Score$ :
+Formula untuk menghitung metrik $accuracy$ adalah sebagai berikut:
 
-<br>
-<div><img src="https://github.com/mizanulridhoaohana/machine-learning-terapan/assets/112617513/06c7a544-80f8-4d61-8746-3076900587a5" width="600" align="center"/></div>
-<br>
+$$\ \text{Accuracy} = \frac{\text{Jumlah Prediksi Benar}}{\text{Total Jumlah Prediksi}} \$$
+
+Dalam formula ini:
+- $Jumlah Prediksi Benar$ adalah jumlah prediksi yang benar atau prediksi yang sesuai dengan kelas sebenarnya.
+- $Total Jumlah Prediksi$ adalah jumlah dari semua prediksi yang dilakukan oleh model.
+
+Hasil akhir dari metrik "accuracy" dinyatakan dalam bentuk persentase. Semakin tinggi nilai "accuracy," semakin baik kinerja model dalam melakukan prediksi kelas.
+
+### Hasil Evaluasi Proyek
+
+Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision Tree_ diperoleh hasil evaluasi menggunakan $R^2 Score$. Berikut hasil evaluasi pada proyek ini :
+  Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
+  | rekomendasi                 | kedekatan |
+  |-----------------------------|-----------|
+  | Sooraj Ki Baahon Mein       | 0.963532  |
+  | Nayan Tarse                 | 0.963530  |
+  | Tamma Tamma Again           | 0.963530  |
+  | Shades of Grey              | 0.963527  |
+  | Taaron Ke Shehar            | 0.963526  |
+  
+  
+  Tabel 2. Evaluasi $accuracy$ pada proyek
+  | model                       | accuracy |
+  |-----------------------------|----------|
+  | Scholastic Gradient Descent | 0.905521 |
+  | Decision Tree               | 0.736810 |
+
+  Berdasarkan Tabel 2. dapat diketahui bahwa hasil yang diperoleh oleh _Decision Tree_ cenderung lebih tinggi jika dibandingkan dengan L_ogistic Linear Regression_ dengan nilai $R^2 Score$ secara berturut-urut 0,91 dan 0,72. Hasil ini sudah cukup memuaskan karena _Decision Tree_ mampu untuk merepresentasikan variasi yang ada pada dataset. Namun, untuk mengamati lebih lanjut, dilakukan proses lanjutan dengan menggunakan _Hyper-tuning Parameter_ untuk melihat seberapa optimal parameter dapat dimanfaatkan. 
+  
+  Dalam hal ini dipilih model _Decision Tree_ dengan akurasi 0.91 untuk melakukan _tuning_ parameter daripada model _Logistic Regression_ dengan akurasi 0.72 hal ini disebabkan oleh beberapa faktor. Pertama, kinerja yang lebih baik dari _Decision Tree_ menunjukkan kemampuan model ini dalam mengklasifikasikan data dengan akurasi yang lebih tinggi, yang menjadi tujuan utama dalam _machine learning_. Selain itu, _Decision Tree_ mampu menangani hubungan yang lebih kompleks antara fitur-fitur dan variabel target, yang lebih sulit diakomodasi oleh model _Logistic Regression_ yang bergantung pada hubungan linier. Jika _tuning_ parameter pada _Decision Tree_ berhasil meningkatkan akurasi, ini menandakan bahwa model telah dioptimalkan dengan baik. Konteks masalah, interpretabilitas, dan tujuan akhir dalam analisis juga memainkan peran penting dalam pemilihan model. Akhirnya, pemilihan model selalu bergantung pada kombinasi dari faktor-faktor ini, dan dalam situasi ini, _Decision Tree_ terbukti menjadi pilihan yang lebih baik dalam mencapai kinerja yang diinginkan. Berikut adalah hasil dari _Grid Search_ pada proyek ini :
+
+  Tabel 2. _Hyper-Tuning Parameter_ pada _Decision Tree_
+  | model    | best_params                                                     |
+  |----------|-----------------------------------------------------------------|
+  | Decision Tree| {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split':2}  |
+
+Tabel 3. Evaluasi $R^2 Score$ pada proyek
+  | model                       | r2_score |
+  |-----------------------------|----------|
+  | Logistic Linear Regression  | 0.720902 |
+  | Decision Tree               | 0.918839 |
+  | Decision Tree (Hyper-tuning)| 0.974387 |
+
+Dari hasil evaluasi yang diperoleh pada Tabel 3 dapat disimpulkan bahwa algoritma terbaik untuk memprediksi permasalahan ini adalah _Decision Tree_ dengan _Hyper-Tuning Parameter_. Nilai R2 Score yang didapatkan adalah 0.97438 atau bisa dibilang mendekati nilai maksimum 1. R2 Score (_Coefficient of Determination_) adalah ukuran statistik yang mengindikasikan sejauh mana model statistik memprediksi variabilitas data. Nilai R2 Score berkisar antara 0 hingga 1, di mana 1 menunjukkan bahwa model mampu menjelaskan seluruh variasi dalam data dengan sempurna, sementara 0 menunjukkan bahwa model sama buruknya dengan menggunakan nilai rata-rata sebagai prediksi.
+
+Dalam konteks ini, mendekati 1 adalah hal yang baik karena model Decision Tree yang telah di-_tune_ dengan baik mampu menjelaskan sebagian besar variasi dalam harga mobil _sport_ berdasarkan fitur-fitur yang digunakan (_Car Make, Car Model, Year, Engine Size, Horsepower, Torque, 0-60 MPH Time_). Ini menunjukkan bahwa model mampu memberikan prediksi yang sangat baik dan akurat dalam menjelaskan bagaimana berbagai faktor-fitur ini memengaruhi harga mobil _sport_. Dengan kata lain, sekitar 97.44% variasi dalam harga mobil sport dapat dijelaskan oleh model ini.
+
+Dengan hasil ini, didapatkan tingkat keyakinan yang tinggi dalam kemampuan model untuk melakukan prediksi harga mobil _sport_ berdasarkan atribut-atribut yang diberikan. Hal ini dapat berguna dalam analisis pasar, penetapan harga yang lebih akurat, atau dalam mengidentifikasi faktor-faktor kunci yang memengaruhi harga mobil sport.
+
+### Implikasi Bisnis
+
+Hasil evaluasi dengan $accuracy$ yang mendekati 1 memiliki implikasi yang signifikan dalam konteks pengambilan keputusan bisnis. Dalam kasus ini, di mana model _Decision Tree_ yang telah di-_tune_ memiliki $R^2 Score$ sebesar 0.97438, ini berarti bahwa model tersebut mampu menjelaskan sebagian besar variasi dalam harga mobil sport berdasarkan fitur-fitur yang diberikan. 
+
+Implikasi ini dapat berdampak pada sejumlah keputusan bisnis:
+
+1. Peningkatan Pengalaman Pengguna: Dengan menggunakan model rekomendasi yang optimal, Anda dapat meningkatkan pengalaman pengguna di platform musik Anda. Dengan memahami preferensi dan perilaku mendengarkan pengguna, Anda dapat menyajikan lagu-lagu yang sesuai dengan selera mereka, sehingga meningkatkan retensi pengguna dan mendorong lebih banyak interaksi dengan platform.
+
+2. Peningkatan Retensi Pengguna: Model rekomendasi yang baik dapat membantu mempertahankan pengguna dalam jangka waktu yang lebih lama. Pengguna yang mendapatkan rekomendasi yang relevan dan sesuai dengan preferensi mereka lebih cenderung untuk terus menggunakan platform Anda, yang dapat menghasilkan pendapatan berkelanjutan.
+
+3. Pengoptimalan Katalog Musik: Dengan memahami faktor-faktor yang memengaruhi popularitas musik, Anda dapat mengoptimalkan katalog musik Anda. Anda dapat menentukan lagu-lagu mana yang paling sesuai untuk promosi, dan mungkin mendapatkan wawasan tentang tren musik yang sedang berlangsung.
+
+4. Monetisasi Lebih Lanjut: Dengan memahami perilaku pengguna dan preferensi mereka, Anda dapat mengarahkan pengguna ke konten berbayar atau menghasilkan pendapatan tambahan melalui rekomendasi yang cermat.
+
+5. Analisis Sentimen dan Pemasaran: Data tentang popularitas musik dan preferensi pengguna dapat memberikan wawasan berharga tentang tren dan sentimen musik. Perusahaan dapat menggunakan data ini untuk merancang kampanye pemasaran yang lebih efektif dan mengidentifikasi peluang bisnis yang mungkin.
+
+6. Kolaborasi dengan Artis dan Label Musik: Dengan pemahaman yang lebih baik tentang faktor-faktor yang memengaruhi popularitas musik, Anda dapat menjalin kemitraan dengan artis dan label musik untuk mempromosikan lagu-lagu yang mungkin mendapatkan popularitas lebih besar.
+
+7. Pemahaman Audiens yang Lebih Baik: Analisis data yang lebih mendalam dapat membantu Anda memahami audiens Anda dengan lebih baik. Ini dapat membantu dalam pengembangan konten yang disesuaikan, rencana pemasaran yang lebih efisien, dan pertumbuhan bisnis yang berkelanjutan.
+
+8. Pemantauan dan Evaluasi Kinerja: Model rekomendasi dapat membantu Anda dalam pemantauan dan evaluasi kinerja lagu-lagu, album, atau artis tertentu. Anda dapat mengidentifikasi kinerja yang kuat dan memahami faktor-faktor yang berkontribusi terhadap kesuksesan mereka.
+
+Dengan kata lain, _R2 Score_ yang tinggi memberikan landasan yang kuat untuk mengambil keputusan bisnis yang lebih tepat dan berorientasi data. Dalam konteks industri mobil _sport_ yang sangat kompetitif, pemahaman yang kuat tentang faktor-faktor yang memengaruhi harga adalah aset berharga dalam merencanakan strategi dan mengoptimalkan operasi bisnis.
 
 
 Dalam rumus ini:
