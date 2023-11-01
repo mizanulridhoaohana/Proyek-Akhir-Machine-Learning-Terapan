@@ -197,14 +197,15 @@ Hasil akhir dari metrik "accuracy" dinyatakan dalam bentuk persentase. Semakin t
 
 Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision Tree_ diperoleh hasil evaluasi menggunakan $R^2 Score$. Berikut hasil evaluasi pada proyek ini :
   Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
-  | rekomendasi                 | kedekatan |
-  |-----------------------------|-----------|
-  | Sooraj Ki Baahon Mein       | 0.963532  |
-  | Nayan Tarse                 | 0.963530  |
-  | Tamma Tamma Again           | 0.963530  |
-  | Shades of Grey              | 0.963527  |
-  | Taaron Ke Shehar            | 0.963526  |
-  
+  | rekomendasi musik                | kedekatan |
+  |----------------------------------|-----------|
+  | Sooraj Ki Baahon Mein            | 0.963532  |
+  | Nayan Tarse                      | 0.963530  |
+  | Tamma Tamma Again                | 0.963530  |
+  | Shades of Grey                   | 0.963527  |
+  | Taaron Ke Shehar                 | 0.963526  |
+
+  Jika dilihat pada Tabel 1. nilai _cosine similarity_ yang dihasilkan bisa dibilang sudah sangat baik karena mendekati nilai sempurna yaitu 1. Oleh karena itu, bisa dikatakan bahwa rekomendasi yang dihasilkan sudah benar.
   
   Tabel 2. Evaluasi $accuracy$ pada proyek
   | model                       | accuracy |
@@ -216,10 +217,11 @@ Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision
   
   Dalam hal ini dipilih model _Decision Tree_ dengan akurasi 0.91 untuk melakukan _tuning_ parameter daripada model _Logistic Regression_ dengan akurasi 0.72 hal ini disebabkan oleh beberapa faktor. Pertama, kinerja yang lebih baik dari _Decision Tree_ menunjukkan kemampuan model ini dalam mengklasifikasikan data dengan akurasi yang lebih tinggi, yang menjadi tujuan utama dalam _machine learning_. Selain itu, _Decision Tree_ mampu menangani hubungan yang lebih kompleks antara fitur-fitur dan variabel target, yang lebih sulit diakomodasi oleh model _Logistic Regression_ yang bergantung pada hubungan linier. Jika _tuning_ parameter pada _Decision Tree_ berhasil meningkatkan akurasi, ini menandakan bahwa model telah dioptimalkan dengan baik. Konteks masalah, interpretabilitas, dan tujuan akhir dalam analisis juga memainkan peran penting dalam pemilihan model. Akhirnya, pemilihan model selalu bergantung pada kombinasi dari faktor-faktor ini, dan dalam situasi ini, _Decision Tree_ terbukti menjadi pilihan yang lebih baik dalam mencapai kinerja yang diinginkan. Berikut adalah hasil dari _Grid Search_ pada proyek ini :
 
-  Tabel 2. _Hyper-Tuning Parameter_ pada _Decision Tree_
+  Tabel 2. _Hyper-Tuning Parameter_
   | model    | best_params                                                     |
   |----------|-----------------------------------------------------------------|
-  | Decision Tree| {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split':2}  |
+  | Scholastic Gradient Descent| {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split':2} |
+  | Decision Tree| {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split':2} |
 
 Tabel 3. Evaluasi $R^2 Score$ pada proyek
   | model                       | r2_score |
