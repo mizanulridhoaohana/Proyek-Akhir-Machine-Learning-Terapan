@@ -2,13 +2,11 @@
 
 ## Project Overview
 
-Pada bagian ini, Kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+<br>
+<div><img src="https://github.com/mizanulridhoaohana/Proyek-Akhir-Machine-Learning-Terapan/assets/112617513/f2b1f44c-35f2-4699-aab0-577c29567d9a" width="1000"/></div>
+Gambar 1. Logo Spotify
+<br>
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa proyek ini penting untuk diselesaikan.
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
 
 ## Business Understanding
 
@@ -72,6 +70,21 @@ Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
 
 Pada proses EDA, banyak digunakan analisis sebaran dan korelasi yang bisa dilihat langsung pada code yang sudah dilampirkan. Penggunaan visualisasi juga menjadi faktor penting dalam mempermudah memahami karakteristik dataset. Hal ini memberikan _insight_ lanjutan untuk memproses data sebelum dilakukan proses prediksi.
 
+![correlation](https://github.com/mizanulridhoaohana/Proyek-Akhir-Machine-Learning-Terapan/assets/112617513/88d32b80-666f-4fe8-83c7-d6ee8bb41023)
+
+Gambar 2. Visualisasi Korelasi Dataset
+
+![pairplot](https://github.com/mizanulridhoaohana/Proyek-Akhir-Machine-Learning-Terapan/assets/112617513/1dbcc853-51dc-406d-81d7-953dce04c825)
+
+Gambar 3. Visualisasi Sebaran dan Korelasi Keseluruhan data
+
+Dalam Exploratory Data Analysis (EDA), Gambar 2 dan Gambar 3 akan melakukan visualisasi hubungan antara setiap pasangan variabel numerik dalam dataset. Setiap sel dalam matriks berisi sebuah scatter plot yang menunjukkan bagaimana dua variabel numerik berinteraksi. Selain itu, diagonal matriks berisi histogram dari masing-masing variabel, yang dapat membantu untuk mempermudah dalam memahami distribusi data. Palet warna yang digunakan oleh Seaborn dapat membantu mengidentifikasi kategori dalam variabel, sehingga memungkinkan untuk melihat hubungan antar variabel numerik dalam konteks kategori. Fungsi ini memberikan pandangan keseluruhan tentang data, dapat membantu dalam menemukan pola, korelasi, atau outlier yang mungkin tidak terlihat dalam statistik deskriptif biasa.
+
+![distribution](https://github.com/mizanulridhoaohana/Proyek-Akhir-Machine-Learning-Terapan/assets/112617513/ec2e5395-4535-4d50-804c-f60aa7ab49cf)
+
+Gambar 4. Visualisasi Distribusi Popularitas berdasarkan Density
+
+Dari 
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
@@ -88,12 +101,28 @@ Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk meny
 - Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+Metrik evaluasi yang digunakan pada proyek ini [Accuracy](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html). $R^2$ (R-_squared_), juga dikenal sebagai koefisien determinasi, adalah metrik evaluasi yang digunakan dalam statistik dan analisis regresi untuk mengukur sejauh mana model regresi cocok dengan data yang diamati. $R^2 Score$ mengukur seberapa baik variabilitas dalam data independen (variabel prediktor) menjelaskan variabilitas dalam data dependen (variabel target). $R^2 Score$ berkisar antara 0 hingga 1, di mana 1 mengindikasikan bahwa model mampu menjelaskan semua variasi dalam data dengan sempurna, sementara 0 menunjukkan bahwa model tidak menjelaskan variasi apa pun dan hasilnya sama dengan prediksi rata-rata. 
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Oleh karena itu, penggunaan $R^2 Score$ dalam  proyek ini adalah untuk mengukur sejauh mana model mampu menjelaskan variasi dalam harga mobil sport berdasarkan atribut-atribut yang ada. Dengan cara membandingkan kinerja model dengan prediksi rata-rata, R2 Score memberikan gambaran tentang tingkat akurasi prediksi, yang penting dalam menentukan prediksi harga mobil. Berikut formula $R^2 Score$ :
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+<br>
+<div><img src="https://github.com/mizanulridhoaohana/machine-learning-terapan/assets/112617513/06c7a544-80f8-4d61-8746-3076900587a5" width="600" align="center"/></div>
+<br>
+
+
+Dalam rumus ini:
+- $\( R^2 \)$ adalah $R^2 Score$.
+- $SSRES$ adalah jumlah kuadrat dari sisa kesalahan.
+- $SSTOT$ adalah jumlah total kesalahan.
+- $\( y_i \)$ adalah nilai sebenarnya dari data.
+- $\( \hat{y}_i \)$ adalah nilai yang diprediksi oleh model.
+- $\( \bar{y} \)$ adalah rata-rata dari nilai sebenarnya.
+
+Contoh Interpretasi perhitungan $R^2 Score$ :
+Asumsikan $R^2$ = 0,68
+Dapat dikatakan bahwa 68% variabilitas atribut keluaran dependen dapat dijelaskan oleh model, sedangkan 32% sisanya masih belum dapat dijelaskan.
+$R^2$ menunjukkan proporsi titik data yang terletak di dalam garis yang dibuat oleh persamaan regresi. Nilai $R^2$ yang lebih tinggi diinginkan karena menunjukkan hasil yang lebih baik.
+
 
 **---Ini adalah bagian akhir laporan---**
 
