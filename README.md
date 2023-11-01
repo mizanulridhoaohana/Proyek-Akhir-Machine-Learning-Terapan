@@ -32,7 +32,8 @@ Tujuan dalam proyek ini adalah:
 
 ### Solution statements
 
-- Untuk 
+- Melakukan analisis mendalam pada dataset yang ada, proses ini seperti exploratory data analytics (EDA). Analisis ini akan membantu dalam mengidentifikasi hubungan antar fitur dan mendeteksi outlier yang mungkin memengaruhi rekomendasi dan hasil prediksi yang diberikan.
+- 
 
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
