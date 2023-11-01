@@ -33,20 +33,45 @@ Tujuan dalam proyek ini adalah:
 ### Solution statements
 
 - Melakukan analisis mendalam pada dataset yang ada, proses ini seperti exploratory data analytics (EDA). Analisis ini akan membantu dalam mengidentifikasi hubungan antar fitur dan mendeteksi outlier yang mungkin memengaruhi rekomendasi dan hasil prediksi yang diberikan.
-- 
+- Selanjutnya, perlu dilakukan persiapan data agar sesuai untuk pelatihan model machine learning. Ini termasuk pemrosesan data, penanganan nilai-nilai yang hilang, dan pemilihan fitur yang relevan.
+- Dalam penyelesaian masalah ini, akan digunakan algoritma machine learning seperti Scholastic Gradient Descent (SGD) dan Decision Tree.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Dataset yang digunakan dalam proyek ini merupakan dataset dari spotify yang terdiri dari 18 fitur. Dataset ini diperoleh dari [Github : Rashi Bhansali](https://github.com/rashi-bhansali/Song-Recommender-cosine-similarity-and-KNN-/blob/main/data.csv).
 
-Selanjutnya, uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Berikut informasi pada dataset :
+
++ Dataset memiliki format CSV (_Comma-Seperated Values_).
++ Dataset memiliki 8585 sample dengan 18 fitur.
++ Dataset memiliki 5 fitur bertipe stobject, 3 fitur bertipe _Integer_ dan 10 fitur bertipe _Float_.
++ Terdapat beberapa missing value dan data yang tidak perlu digunakan dalam dataset.
+
+
+### Variabel pada dataset
 
 Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+- id: memberikan data unique key dalam setiap key.
+- name: memberikan data nama dari lagu
+- album: memberikan data nama dari album
+- artist: memberikan data nama artist
+- release_date: memberikan data tanggal rilis dari lagu tersebut
+- duration_ms: Semakin tinggi nilainya, semakin lama durasi lagu tersebut.
+- popularity: Semakin tinggi nilainya, semakin populer lagu tersebut.
+- danceability: Semakin tinggi nilainya, semakin mudah untuk menari mengikuti lagu ini
+- acousticness: Semakin tinggi nilainya, semakin akustik lagu tersebut
+- danceability.1: Semakin tinggi nilainya, semakin mudah untuk menari mengikuti lagu ini
+- energy: Energi sebuah lagu - semakin tinggi nilainya, semakin energik. lagu
+- instrumentalness: Nilai-nilai mendekati 1 menunjukkan lagu yang cenderung instrumental, nilai mendekati 0 menunjukkan lagu dengan vokal yang lebih dominan.
+- liveness: Atribut ini mencerminkan apakah ada unsur pertunjukan langsung dalam lagu, seperti respon penonton atau nuansa pertunjukan langsung.   
+- loudness: Semakin tinggi nilainya, semakin keras lagunya.   
+- speechiness: Semakin tinggi nilainya, semakin banyak kata-kata yang diucapkan dalam lagu tersebut
+- tempo: Tempo adalah atribut yang mengukur kecepatan atau laju sebuah lagu. Ini diukur dalam ketukan per menit (beats per minute atau BPM).
+- year: Atribut "year" adalah tahun di mana lagu tersebut dirilis atau direkam.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data beserta insight atau exploratory data analysis.
+### Exploratory Data Analytics
+
+Pada proses EDA, banyak digunakan analisis sebaran dan korelasi yang bisa dilihat langsung pada code yang sudah dilampirkan. Penggunaan visualisasi juga menjadi faktor penting dalam mempermudah memahami karakteristik dataset. Hal ini memberikan _insight_ lanjutan untuk memproses data sebelum dilakukan proses prediksi.
+
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
