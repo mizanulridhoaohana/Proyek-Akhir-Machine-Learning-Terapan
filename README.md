@@ -7,6 +7,7 @@
 Gambar 1. Logo Spotify
 <br>
 
+Musik adalah salah satu hal yang tidak bisa dilepaskan dalam kehidupan sehari-hari. Sebagian besar penduduk dunia hampir menggunakan musik dalam berbagai kegiatan, tujuan penggunaannya bermacam-macam, mulai dari hiburan, relaksasi, penyemangat, dll. Secara tidak langsung, hal ini berimplikasi kepada besarnya peluang industri musik untuk mengembangkan bisnis dan meraup keuntungan. Dengan adanya oportunitis ini, banyak bermunculan start up atau platform penyedia layanan musik yang mengakibatkan persaingan semakin ketat. 
 
 ## Business Understanding
 
@@ -196,6 +197,7 @@ Hasil akhir dari metrik "accuracy" dinyatakan dalam bentuk persentase. Semakin t
 ### Hasil Evaluasi Proyek
 
 Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision Tree_ diperoleh hasil evaluasi menggunakan $R^2 Score$. Berikut hasil evaluasi pada proyek ini :
+
   Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
   | rekomendasi musik                | kedekatan |
   |----------------------------------|-----------|
@@ -206,6 +208,8 @@ Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision
   | Taaron Ke Shehar                 | 0.963526  |
 
   Jika dilihat pada Tabel 1. nilai _cosine similarity_ yang dihasilkan bisa dibilang sudah sangat baik karena mendekati nilai sempurna yaitu 1. Oleh karena itu, bisa dikatakan bahwa rekomendasi yang dihasilkan sudah benar.
+
+  Selain menggunakan cosine similarity, untuk menjalankan prediksi digunakan algoritma Scholastic Gradient Descent (SGD) dan Decision Tree. Dalam penerapannya, kedua algoritma ini juga dikombinasikan dengan hypertuning parameter (grid search). Hasil akhir dari algoritma ini adalah sebagai berikut:
   
   Tabel 2. Evaluasi $accuracy$ pada proyek
   | model                       | accuracy |
@@ -213,32 +217,24 @@ Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision
   | Scholastic Gradient Descent | 0.905521 |
   | Decision Tree               | 0.736810 |
 
-  Berdasarkan Tabel 2. dapat diketahui bahwa hasil yang diperoleh oleh _Decision Tree_ cenderung lebih tinggi jika dibandingkan dengan L_ogistic Linear Regression_ dengan nilai $R^2 Score$ secara berturut-urut 0,91 dan 0,72. Hasil ini sudah cukup memuaskan karena _Decision Tree_ mampu untuk merepresentasikan variasi yang ada pada dataset. Namun, untuk mengamati lebih lanjut, dilakukan proses lanjutan dengan menggunakan _Hyper-tuning Parameter_ untuk melihat seberapa optimal parameter dapat dimanfaatkan. 
-  
-  Dalam hal ini dipilih model _Decision Tree_ dengan akurasi 0.91 untuk melakukan _tuning_ parameter daripada model _Logistic Regression_ dengan akurasi 0.72 hal ini disebabkan oleh beberapa faktor. Pertama, kinerja yang lebih baik dari _Decision Tree_ menunjukkan kemampuan model ini dalam mengklasifikasikan data dengan akurasi yang lebih tinggi, yang menjadi tujuan utama dalam _machine learning_. Selain itu, _Decision Tree_ mampu menangani hubungan yang lebih kompleks antara fitur-fitur dan variabel target, yang lebih sulit diakomodasi oleh model _Logistic Regression_ yang bergantung pada hubungan linier. Jika _tuning_ parameter pada _Decision Tree_ berhasil meningkatkan akurasi, ini menandakan bahwa model telah dioptimalkan dengan baik. Konteks masalah, interpretabilitas, dan tujuan akhir dalam analisis juga memainkan peran penting dalam pemilihan model. Akhirnya, pemilihan model selalu bergantung pada kombinasi dari faktor-faktor ini, dan dalam situasi ini, _Decision Tree_ terbukti menjadi pilihan yang lebih baik dalam mencapai kinerja yang diinginkan. Berikut adalah hasil dari _Grid Search_ pada proyek ini :
-
-  Tabel 2. _Hyper-Tuning Parameter_
+  Tabel 3. Best Parameter pada _Hyper-Tuning_
   | model    | best_params                                                     |
   |----------|-----------------------------------------------------------------|
-  | Scholastic Gradient Descent| {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split':2} |
-  | Decision Tree| {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split':2} |
+  | Scholastic Gradient Descent| {'alpha': 0.001}|
+  | Decision Tree| {'max_depth': 5, 'max_features': 1.0, 'min_samples_leaf': 1, 'min_samples_split': 2}|
+  
+  Berdasarkan Tabel 2. dapat diketahui bahwa hasil yang diperoleh oleh _Scholastic Gradient Descent_ cenderung lebih tinggi jika dibandingkan dengan _Decision Tree_ dengan nilai $accuracy$ secara berturut-urut 0,90 dan 0,73. Hasil ini sudah cukup memuaskan karena _Scholastic Gradient Descent_ mampu untuk memprediksi label sesuai dengan label sebenarnya pada dataset dataset. Dalam konteks ini, mendekati 1 adalah hal yang baik karena model _Scholastic Gradient Descent_ yang telah di-_tune_ mampu memberikan hasil prediksi benar dengan baik berdasarkan fitur-fitur yang digunakan. Ini menunjukkan bahwa model mampu memberikan prediksi yang sangat baik dan akurat dalam memberikan rekomendasi musik sesuai preferensi musik yang disukai oleh pengguna.
+  
+  Tabel 3. berisi parameter terbaik (best parameters) yang dihasilkan dari proses hyperparameter tuning (penyetelan parameter) untuk masing-masing model. Parameter terbaik ini digunakan saat melatih model. Untuk dua model yang disebutkan, yaitu _Scholastic Gradient Descent_ dan _Decision Tree_, parameter terbaik adalah sebagai berikut:
 
-Tabel 3. Evaluasi $R^2 Score$ pada proyek
-  | model                       | r2_score |
-  |-----------------------------|----------|
-  | Logistic Linear Regression  | 0.720902 |
-  | Decision Tree               | 0.918839 |
-  | Decision Tree (Hyper-tuning)| 0.974387 |
++ Model "Scholastic Gradient Descent" memiliki parameter terbaik {'alpha': 0.001}. Ini menunjukkan bahwa parameter 'alpha' dengan nilai 0.001 memberikan kinerja terbaik untuk model SGD.
++ Model "Decision Tree" memiliki parameter terbaik {'max_depth': 5, 'max_features': 1.0, 'min_samples_leaf': 1, 'min_samples_split': 2}. Ini menunjukkan kombinasi parameter yang menghasilkan kinerja terbaik untuk model Decision Tree.
 
-Dari hasil evaluasi yang diperoleh pada Tabel 3 dapat disimpulkan bahwa algoritma terbaik untuk memprediksi permasalahan ini adalah _Decision Tree_ dengan _Hyper-Tuning Parameter_. Nilai R2 Score yang didapatkan adalah 0.97438 atau bisa dibilang mendekati nilai maksimum 1. R2 Score (_Coefficient of Determination_) adalah ukuran statistik yang mengindikasikan sejauh mana model statistik memprediksi variabilitas data. Nilai R2 Score berkisar antara 0 hingga 1, di mana 1 menunjukkan bahwa model mampu menjelaskan seluruh variasi dalam data dengan sempurna, sementara 0 menunjukkan bahwa model sama buruknya dengan menggunakan nilai rata-rata sebagai prediksi.
+Tabel ini memberikan wawasan tentang parameter mana yang paling sesuai untuk digunakan dalam melatih model-model tersebut. Parameter terbaik ini dapat membantu meningkatkan kinerja model dalam memprediksi data.
 
-Dalam konteks ini, mendekati 1 adalah hal yang baik karena model Decision Tree yang telah di-_tune_ dengan baik mampu menjelaskan sebagian besar variasi dalam harga mobil _sport_ berdasarkan fitur-fitur yang digunakan (_Car Make, Car Model, Year, Engine Size, Horsepower, Torque, 0-60 MPH Time_). Ini menunjukkan bahwa model mampu memberikan prediksi yang sangat baik dan akurat dalam menjelaskan bagaimana berbagai faktor-fitur ini memengaruhi harga mobil _sport_. Dengan kata lain, sekitar 97.44% variasi dalam harga mobil sport dapat dijelaskan oleh model ini.
+### Implikasi Bisnis 
 
-Dengan hasil ini, didapatkan tingkat keyakinan yang tinggi dalam kemampuan model untuk melakukan prediksi harga mobil _sport_ berdasarkan atribut-atribut yang diberikan. Hal ini dapat berguna dalam analisis pasar, penetapan harga yang lebih akurat, atau dalam mengidentifikasi faktor-faktor kunci yang memengaruhi harga mobil sport.
-
-### Implikasi Bisnis
-
-Hasil evaluasi dengan $accuracy$ yang mendekati 1 memiliki implikasi yang signifikan dalam konteks pengambilan keputusan bisnis. Dalam kasus ini, di mana model _Decision Tree_ yang telah di-_tune_ memiliki $R^2 Score$ sebesar 0.97438, ini berarti bahwa model tersebut mampu menjelaskan sebagian besar variasi dalam harga mobil sport berdasarkan fitur-fitur yang diberikan. 
+Hasil evaluasi dengan $accuracy$ yang mendekati 1 memiliki implikasi yang signifikan dalam konteks pengambilan keputusan bisnis. Dalam kasus ini, di mana model _Scholatic Gradient Descent (SGD)_ yang telah di-_tune_ memiliki $accuracy$ sebesar 0.97438, ini berarti bahwa model tersebut mampu melakukan prediksi benar pada setiap label berdasarkan fitur-fitur yang diberikan.
 
 Implikasi ini dapat berdampak pada sejumlah keputusan bisnis:
 
@@ -258,25 +254,3 @@ Implikasi ini dapat berdampak pada sejumlah keputusan bisnis:
 
 8. Pemantauan dan Evaluasi Kinerja: Model rekomendasi dapat membantu Anda dalam pemantauan dan evaluasi kinerja lagu-lagu, album, atau artis tertentu. Anda dapat mengidentifikasi kinerja yang kuat dan memahami faktor-faktor yang berkontribusi terhadap kesuksesan mereka.
 
-Dengan kata lain, _R2 Score_ yang tinggi memberikan landasan yang kuat untuk mengambil keputusan bisnis yang lebih tepat dan berorientasi data. Dalam konteks industri mobil _sport_ yang sangat kompetitif, pemahaman yang kuat tentang faktor-faktor yang memengaruhi harga adalah aset berharga dalam merencanakan strategi dan mengoptimalkan operasi bisnis.
-
-
-Dalam rumus ini:
-- $\( R^2 \)$ adalah $R^2 Score$.
-- $SSRES$ adalah jumlah kuadrat dari sisa kesalahan.
-- $SSTOT$ adalah jumlah total kesalahan.
-- $\( y_i \)$ adalah nilai sebenarnya dari data.
-- $\( \hat{y}_i \)$ adalah nilai yang diprediksi oleh model.
-- $\( \bar{y} \)$ adalah rata-rata dari nilai sebenarnya.
-
-Contoh Interpretasi perhitungan $R^2 Score$ :
-Asumsikan $R^2$ = 0,68
-Dapat dikatakan bahwa 68% variabilitas atribut keluaran dependen dapat dijelaskan oleh model, sedangkan 32% sisanya masih belum dapat dijelaskan.
-$R^2$ menunjukkan proporsi titik data yang terletak di dalam garis yang dibuat oleh persamaan regresi. Nilai $R^2$ yang lebih tinggi diinginkan karena menunjukkan hasil yang lebih baik.
-
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
