@@ -192,6 +192,19 @@ Data preparation yang dilakukan pada dataset ini adalah sebagai berikut:
     
     _ Hyperparameter tuning_ adalah cara untuk mendapatkan parameter terbaik dari algoritma dalam membangun model. Salah satu teknik dalam _hyperparameter tuning_ yang digunakan dalam proyek ini adalah _grid search_. Langkah pertama dalam algoritma ini adalah mendefinisikan parameter yang akan diuji, seperti kedalaman pohon dalam Decision Tree atau laju pembelajaran dalam Scholastic Gradient Descent. Kemudian, akan dibuat "grid" parameter yang berisi semua kombinasi nilai yang akan diuji. Setelah itu, data akan dibagi menjadi set pelatihan dan set validasi silang. Untuk setiap kombinasi parameter dalam grid, model dilatih pada set pelatihan dan diuji pada set validasi silang. Hasilnya dievaluasi dengan metrik kinerja seperti akurasi. Setelah mengevaluasi semua kombinasi parameter, akan dipilih kombinasi yang memberikan kinerja terbaik. Parameter ini kemudian digunakan untuk melatih model pada seluruh data pelatihan. Pendekatan ini akan mempermudah dalam menemukan parameter yang optimal tanpa harus melakukan upaya uji coba dan kesalahan secara manual, dan memastikan bahwa model yang dibangun memiliki kinerja paling baik untuk tugas yang diberikan.
 
++ Hasil Rekomendasi Content Based Filtering menggunakan cosine similarity
+
+Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
+  | rekomendasi musik                | kedekatan |
+  |----------------------------------|-----------|
+  | Sooraj Ki Baahon Mein            | 0.963532  |
+  | Nayan Tarse                      | 0.963530  |
+  | Tamma Tamma Again                | 0.963530  |
+  | Shades of Grey                   | 0.963527  |
+  | Taaron Ke Shehar                 | 0.963526  |
+
+  Jika dilihat pada Tabel 1. nilai _cosine similarity_ yang dihasilkan bisa dibilang sudah sangat baik karena mendekati nilai sempurna yaitu 1. Oleh karena itu, bisa dikatakan bahwa rekomendasi yang dihasilkan sudah benar.
+
 
 ## Evaluation
 Metrik evaluasi yang digunakan pada proyek ini adalah [Accuracy](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html). Metrik evaluasi $accuracy$ adalah salah satu metrik yang digunakan dalam machine learning untuk mengukur sejauh mana model klasifikasi berhasil dalam memprediksi kelas dari data uji. Metrik ini mengukur persentase dari prediksi yang benar (prediksi yang sesuai dengan kelas sebenarnya) dibandingkan dengan total jumlah prediksi.
@@ -208,18 +221,7 @@ Hasil akhir dari metrik "accuracy" dinyatakan dalam bentuk persentase. Semakin t
 
 ### Hasil Evaluasi Proyek
 
-Setelah mengimplementasikan algoritma _Logistic Linear Regression_ dan _Decision Tree_ diperoleh hasil evaluasi menggunakan $R^2 Score$. Berikut hasil evaluasi pada proyek ini :
-
-  Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
-  | rekomendasi musik                | kedekatan |
-  |----------------------------------|-----------|
-  | Sooraj Ki Baahon Mein            | 0.963532  |
-  | Nayan Tarse                      | 0.963530  |
-  | Tamma Tamma Again                | 0.963530  |
-  | Shades of Grey                   | 0.963527  |
-  | Taaron Ke Shehar                 | 0.963526  |
-
-  Jika dilihat pada Tabel 1. nilai _cosine similarity_ yang dihasilkan bisa dibilang sudah sangat baik karena mendekati nilai sempurna yaitu 1. Oleh karena itu, bisa dikatakan bahwa rekomendasi yang dihasilkan sudah benar.
+Setelah mengimplementasikan algoritma _LScholastic Gradient Descent_ dan _Decision Tree_ diperoleh hasil evaluasi menggunakan $R^2 Score$. Berikut hasil evaluasi pada proyek ini :
 
   Selain menggunakan cosine similarity, untuk menjalankan prediksi digunakan algoritma Scholastic Gradient Descent (SGD) dan Decision Tree. Dalam penerapannya, kedua algoritma ini juga dikombinasikan dengan hypertuning parameter (grid search). Hasil akhir dari algoritma ini adalah sebagai berikut:
   
