@@ -193,8 +193,7 @@ Data preparation yang dilakukan pada dataset ini adalah sebagai berikut:
     _ Hyperparameter tuning_ adalah cara untuk mendapatkan parameter terbaik dari algoritma dalam membangun model. Salah satu teknik dalam _hyperparameter tuning_ yang digunakan dalam proyek ini adalah _grid search_. Langkah pertama dalam algoritma ini adalah mendefinisikan parameter yang akan diuji, seperti kedalaman pohon dalam Decision Tree atau laju pembelajaran dalam Scholastic Gradient Descent. Kemudian, akan dibuat "grid" parameter yang berisi semua kombinasi nilai yang akan diuji. Setelah itu, data akan dibagi menjadi set pelatihan dan set validasi silang. Untuk setiap kombinasi parameter dalam grid, model dilatih pada set pelatihan dan diuji pada set validasi silang. Hasilnya dievaluasi dengan metrik kinerja seperti akurasi. Setelah mengevaluasi semua kombinasi parameter, akan dipilih kombinasi yang memberikan kinerja terbaik. Parameter ini kemudian digunakan untuk melatih model pada seluruh data pelatihan. Pendekatan ini akan mempermudah dalam menemukan parameter yang optimal tanpa harus melakukan upaya uji coba dan kesalahan secara manual, dan memastikan bahwa model yang dibangun memiliki kinerja paling baik untuk tugas yang diberikan.
 
 + Hasil Rekomendasi Content Based Filtering menggunakan cosine similarity
-
-Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
+  Tabel 1. Evaluasi kedekatan vector $cosine similarity$ untuk rekomendasi lagu
   | rekomendasi musik                | kedekatan |
   |----------------------------------|-----------|
   | Sooraj Ki Baahon Mein            | 0.963532  |
