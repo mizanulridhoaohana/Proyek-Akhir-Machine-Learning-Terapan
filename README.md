@@ -7,7 +7,19 @@
 Gambar 1. Logo Spotify
 <br>
 
-Musik adalah salah satu hal yang tidak bisa dilepaskan dalam kehidupan sehari-hari. Sebagian besar penduduk dunia hampir menggunakan musik dalam berbagai kegiatan, tujuan penggunaannya bermacam-macam, mulai dari hiburan, relaksasi, penyemangat, dll. Secara tidak langsung, hal ini berimplikasi kepada besarnya peluang industri musik untuk mengembangkan bisnis dan meraup keuntungan. Dengan adanya oportunitis ini, banyak bermunculan start up atau platform penyedia layanan musik yang mengakibatkan persaingan semakin ketat. 
+Musik adalah salah satu hal yang tidak bisa dilepaskan dalam kehidupan sehari-hari. Sebagian besar penduduk dunia hampir menggunakan musik dalam berbagai kegiatan, tujuan penggunaannya bermacam-macam, mulai dari hiburan, relaksasi, penyemangat, dll. Secara tidak langsung, hal ini berimplikasi kepada besarnya peluang industri musik untuk mengembangkan bisnis dan meraup keuntungan. Dengan adanya oportunitis ini, banyak bermunculan start up atau platform penyedia layanan musik yang mengakibatkan persaingan semakin ketat. Berikut adalah beberapa tren dan tantangan dalam industri musik:
+
++ Pasar yang Saturasi: Persaingan dalam industri musik semakin ketat dengan banyak artis dan label yang merilis lagu-lagu baru. Hal ini membuat sulit bagi artis untuk mendapatkan perhatian dan menonjol di tengah persaingan yang sengit.
++ Kebutuhan Personalisasi: Pengguna mengharapkan pengalaman mendengarkan yang lebih personal dan rekomendasi musik yang sesuai dengan preferensi mereka. Kebutuhan untuk memenuhi ekspektasi ini menjadi tantangan besar.
++ Volume Data yang Besar: Data musik dan perilaku mendengarkan pengguna terus berkembang secara eksponensial, yang memerlukan pendekatan yang cerdas untuk mengelola, menganalisis, dan memanfaatkannya.
+
+Untuk mengatasi tren dan tantangan dalam persaingan industri musik, pemanfaatan machine learning adalah resolusi yang efektif. Dengan menggunakan machine learning, perusahaan musik dapat menghadirkan pengalaman mendengarkan yang lebih personal dan rekomendasi musik yang akurat kepada pengguna. Resolusi ini melibatkan pengembangan model rekomendasi musik yang mampu memahami preferensi pengguna dan memberikan rekomendasi yang sesuai.
+
+Selain itu, machine learning dapat digunakan untuk memprediksi musik yang mirip dengan yang sering diputar pengguna. Ini membantu dalam meningkatkan eksplorasi musik pengguna dan memperkenalkan mereka pada lagu-lagu yang mungkin mereka nikmati. Dengan analisis data yang mendalam, machine learning dapat mengidentifikasi pola dalam perilaku mendengarkan pengguna dan menggunakan informasi ini untuk memberikan rekomendasi yang relevan.
+
+Penggunaan machine learning juga dapat membantu dalam mengelola volume data yang besar dan menghasilkan wawasan berharga dari data musik. Dengan algoritma machine learning, perusahaan musik dapat memproses dan menganalisis data secara efisien, mengidentifikasi tren, dan membuat keputusan yang didasarkan pada data.
+
+Dengan demikian, machine learning adalah resolusi yang kuat untuk menjawab tren dan tantangan dalam industri musik dengan memberikan pengalaman mendengarkan yang lebih personal, rekomendasi musik yang cermat, dan pemanfaatan data yang lebih efisien sehingga pengguna mendapatkan pengalaman yang lebih baik.
 
 ## Business Understanding
 
